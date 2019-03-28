@@ -1,10 +1,10 @@
-from lester.item import Item
-
 from lester.synonym import SynonymFinder
 
 
 class RoomMeta(type):
     def __new__(mcs, name, bases, attrs):
+        from lester.item import Item
+
         attrs['items'] = [
             item()
             for item in attrs.values()
