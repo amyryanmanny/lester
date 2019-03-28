@@ -2,7 +2,7 @@
 The App is the parent to all Rooms, Items, and the Player
 It handles all text parsing and action handling
 
-TODO: Replace input/print statements with pipes to decouple interface
+TODO: Replace input/print functions with pipes to decouple interface
 """
 
 from lester.context import Context
