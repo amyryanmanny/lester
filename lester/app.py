@@ -124,8 +124,8 @@ class App:
                     continue
 
             if nouns:
-                subject = self.current_room.get_item(nouns)
-                _object = self.player.get_item(nouns)
+                subject = self.current_room.get_item(nouns[0])
+                _object = self.player.get_item(nouns[0])
             else:
                 # All verb-only commands should already be handled
                 print(f"What should I {verb}?")
