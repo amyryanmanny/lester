@@ -1,4 +1,6 @@
-import lester.context
+if False:
+    # TODO: There has to be a better way to do this
+    from lester.context import Context
 
 
 class ActionMeta(type):
@@ -8,7 +10,7 @@ class ActionMeta(type):
 
         if 'verbs' not in attrs:
             raise AttributeError(f"{name} must have a list of verbs")
-        if getattr(attrs['verbs'], '__iter__') is None:
+        if not getattr(attrs['verbs'], '__iter__', None):
             raise AttributeError(f"{name}'s verbs must be iterable")
 
         if 'do' not in attrs:
@@ -27,7 +29,7 @@ class Action(metaclass=ActionMeta):
     verbs = []
 
     @staticmethod
-    def do(context: lester.context.Context):
+    def do(context: 'Context'):
         """
         This base function exists to improve linting
         """
