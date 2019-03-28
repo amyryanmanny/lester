@@ -8,6 +8,7 @@ TODO: Allow devs to subclass Player to add custom functionality
 
 class Player:
     def __init__(self):
+        # TODO: Make inventory a list with name to item dict like in room.py
         self.inventory = {}
 
     class ItemNotInInventoryError(KeyError):
