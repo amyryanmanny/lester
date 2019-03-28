@@ -4,7 +4,6 @@ from nltk.corpus import brown
 
 from nltk.tokenize import word_tokenize
 from nltk.tag import UnigramTagger
-# from nltk.parse import MaltParser
 
 
 class Parser:
