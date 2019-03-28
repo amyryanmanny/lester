@@ -56,21 +56,11 @@ class Room(metaclass=RoomMeta):
     def name(self):
         return self.names[0]
 
-    def get_item(self, nouns, default=None):
-        """
-        Returns a reference to the item in the room with name=noun
-        """
-        if not nouns:
+    def get_item(self, noun, default=None):
+        try:
+            return self.noun_to_item[noun]
+        except KeyError:
             return default
-
-        for noun in nouns:
-            try:
-                return self.noun_to_item[noun]
-            except KeyError:
-                continue
-        else:
-            return default
-            # raise self.ItemNotInRoomError(f"{nouns[0]} not in {self.name}")
 
     def pop_item(self, noun):
         """
