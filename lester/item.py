@@ -1,8 +1,6 @@
-from lester import constants
+from lester.synonym import SynonymFinder
 
 from lester.action import Action
-
-from lester.synonym import SynonymFinder
 
 
 class ItemMeta(type):
@@ -72,11 +70,23 @@ class Item(metaclass=ItemMeta):
         """
         All Items have this Action by default, which prints its description
         """
-        name = 'look'
-        verbs = constants.LOOK_VERBS
+        verbs = ['look']
 
-        def do(self, context):
+        def do(context):
             print(f"{context.item.description}")
+
+    class Pickup(Action):
+        """
+        All Items have this Action by default, which allows user to pick it up
+        """
+        verbs = ['pick up']
+
+        def do(context):
+            if context.item.obtainable:
+                item = context.room.pop_item(context.item.name)
+                context.player.add_item(item)
+            else:
+                print(f"I can't pick that up")
 
     def get_action(self, verb, default=None):
         """
